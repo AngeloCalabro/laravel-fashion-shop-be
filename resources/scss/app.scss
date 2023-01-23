@@ -1,1 +1,32 @@
+// $fa-font-path: "../fonts/font-awesome" !default;
+
+// @import "~@fortawesome/fontawesome-free/scss/fontawesome";
+// @import "~@fortawesome/fontawesome-free/scss/regular";
+// @import "~@fortawesome/fontawesome-free/scss/solid";
+// @import "~@fortawesome/fontawesome-free/scss/brands";
+
 @import '~bootstrap/scss/bootstrap';
+
+
+#admin {
+    height: 100vh;
+    display: flex;
+
+    #wrapper {
+        flex-grow: 1;
+
+        header {
+            min-height: 70px;
+
+            .img-profile {
+                height: 2rem;
+                width: 2rem;
+            }
+        }
+    }
+
+    #sidebarMenu {
+        background-color: black;
+        color: white;
+    }
+}
