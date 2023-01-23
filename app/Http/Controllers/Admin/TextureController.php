@@ -82,10 +82,11 @@ class TextureController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Texture  $texture
-     * @return \Illuminate\Http\Response
+     *
      */
     public function destroy(Texture $texture)
     {
-        //
+        $texture->delete();
+        return redirect()->route('admin.textures.index')->with('message', "$texture->name deleted successfully");
     }
 }

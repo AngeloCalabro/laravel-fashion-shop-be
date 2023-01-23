@@ -82,10 +82,11 @@ class TypeController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Type  $type
-     * @return \Illuminate\Http\Response
+     *
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+        return redirect()->route('admin.types.index')->with('message', "$type->name deleted successfully");
     }
 }
