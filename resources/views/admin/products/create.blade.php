@@ -61,13 +61,14 @@
                     @enderror
                 </div>
 
-                {{-- workflow type --}}
+            
               
 <br>
-
-                <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-success">Submit</button>
                 <button type="reset" class="btn btn-primary">Reset</button>
             </form>
         </div>
     </div>
+
+
 @endsection
