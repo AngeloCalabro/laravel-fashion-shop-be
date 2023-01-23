@@ -17,7 +17,7 @@ class Brand extends Model
         return Str::slug($name, '-');
     }
 
-    // public function brands():HasMany{
-    //     return $this->hasMany(Brand::class);
-    // }
+    public function brands():HasMany{
+        return $this->hasMany(Brand::class);
+    }
 }

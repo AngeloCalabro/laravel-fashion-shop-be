@@ -17,7 +17,7 @@ class Type extends Model
         return Str::slug($name, '-');
     }
 
-    // public function types():HasMany{
-    //     return $this->hasMany(Type::class);
-    // }
+    public function types():HasMany{
+        return $this->hasMany(Type::class);
+    }
 }

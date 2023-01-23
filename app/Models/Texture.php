@@ -16,7 +16,7 @@ class Texture extends Model
         return Str::slug($name, '-');
     }
 
-    // public function textures():HasMany{
-    //     return $this->hasMany(Texture::class);
-    // }
+    public function textures():HasMany{
+        return $this->hasMany(Texture::class);
+    }
 }

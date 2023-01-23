@@ -17,7 +17,7 @@ class BrandSeeder extends Seeder
      */
     public function run()
     {
-        $brands = config('dataseeder.brands');;
+        $brands = config('dataseeder.brands');
         // dd($brands);
         foreach($brands as $brand){
             $newbrand = new Brand();
