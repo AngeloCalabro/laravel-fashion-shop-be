@@ -35,7 +35,7 @@
                         <a href="{{route('admin.products.show', $product->slug)}}" title="View Product">{{$product->name}}</a>
                     </td>
 
-                    <td><img src="{{ asset('storage/' .$product->api_featured_images) }}" alt=""></td>
+                    <td><img src="{{ asset('storage/' .$product->api_featured_images) }}" alt="{{$product->name}}"></td>
 
                     <td>{{Str::limit($product->description,50)}}</td>
                     <td>{{$product->price}} {{$product->price_sign}}</td>
