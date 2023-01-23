@@ -15,11 +15,12 @@ class TextureController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     *
      */
     public function index()
     {
-        //
+        $textures = Texture::all();
+        return view('admin.textures.index', compact('textures'));
     }
 
     /**
