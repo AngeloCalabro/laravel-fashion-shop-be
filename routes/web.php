@@ -36,7 +36,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('products', ProductController::class)->parameters(['products' => 'project:slug']);
+    Route::resource('products', ProductController::class)->parameters(['products' => 'product:slug']);
     Route::resource('brands', BrandController::class)->parameters(['brands' => 'brand:slug'])->except('show','create','edit');
     Route::resource('textures', TextureController::class)->parameters(['textures' => 'texture:slug'])->except('show','create','edit');
     Route::resource('types', TypeController::class)->parameters(['types' => 'type:slug'])->except('show','create','edit');
