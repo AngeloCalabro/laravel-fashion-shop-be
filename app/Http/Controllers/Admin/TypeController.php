@@ -1,12 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Brand;
-use App\Http\Requests\StoreBrandRequest;
-use App\Http\Requests\UpdateBrandRequest;
+use App\Http\Controllers\Controller;
 
-class BrandController extends Controller
+use App\Models\Type;
+use App\Http\Requests\StoreTypeRequest;
+use App\Http\Requests\UpdateTypeRequest;
+
+use Illuminate\Support\Facades\Auth;
+
+class TypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +35,10 @@ class BrandController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreBrandRequest  $request
+     * @param  \App\Http\Requests\StoreTypeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBrandRequest $request)
+    public function store(StoreTypeRequest $request)
     {
         //
     }
@@ -42,10 +46,10 @@ class BrandController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Brand  $brand
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function show(Brand $brand)
+    public function show(Type $type)
     {
         //
     }
@@ -53,10 +57,10 @@ class BrandController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Brand  $brand
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function edit(Brand $brand)
+    public function edit(Type $type)
     {
         //
     }
@@ -64,11 +68,11 @@ class BrandController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateBrandRequest  $request
-     * @param  \App\Models\Brand  $brand
+     * @param  \App\Http\Requests\UpdateTypeRequest  $request
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBrandRequest $request, Brand $brand)
+    public function update(UpdateTypeRequest $request, Type $type)
     {
         //
     }
@@ -76,10 +80,10 @@ class BrandController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Brand  $brand
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Brand $brand)
+    public function destroy(Type $type)
     {
         //
     }

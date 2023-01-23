@@ -1,10 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
 
 use App\Models\Texture;
 use App\Http\Requests\StoreTextureRequest;
 use App\Http\Requests\UpdateTextureRequest;
+
+use Illuminate\Support\Facades\Auth;
 
 class TextureController extends Controller
 {
