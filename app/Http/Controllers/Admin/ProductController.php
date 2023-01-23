@@ -53,7 +53,7 @@ class ProductController extends Controller
         $data['slug'] = $slug;
 
         if($request->hasFile('api_featured_image')){
-            $path = Storage::disk('public')->put('product_images', $request->images);
+            $path = Storage::disk('public')->put('product_images', $request->api_featured_image);
             $data['api_featured_image'] = $path;
         }
 
@@ -99,13 +99,13 @@ class ProductController extends Controller
         $slug = Product::generateSlug($request->name);
         $data['slug'] = $slug;
 
-        if($request->hasFile('images')){
-            if ($product->images) {
-                Storage::delete($product->images);
+        if($request->hasFile('api_featured_image')){
+            if ($product->api_featured_image) {
+                Storage::delete($product->api_featured_image);
             }
 
-            $path = Storage::disk('public')->put('product_images', $request->images);
-            $data['images'] = $path;
+            $path = Storage::disk('public')->put('product_images', $request->api_featured_image);
+            $data['api_featured_image'] = $path;
         }
 
         $product->update($data);
@@ -121,8 +121,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        if($product->images){
-            Storage::delete($product->images);
+        if($product->api_featured_image){
+            Storage::delete($product->api_featured_image);
         }
 
         $product->delete();
