@@ -12,6 +12,7 @@
     </div>
     @endif
 
+
     <table class="table table-striped">
         <thead>
         <tr>
@@ -97,5 +98,6 @@
         </tbody>
     </table>
     {{ $products->links('vendor.pagination.bootstrap-5') }}
+
     @include('partials.admin.modal-delete')
 @endsection

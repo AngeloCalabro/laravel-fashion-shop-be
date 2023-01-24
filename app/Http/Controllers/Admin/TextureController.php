@@ -26,44 +26,48 @@ class TextureController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * 
      */
     public function create()
     {
-        //
+        return view('admin.textures.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreTextureRequest  $request
-     * @return \Illuminate\Http\Response
+     * 
      */
     public function store(StoreTextureRequest $request)
     {
-        //
+        $data = $request->validated();
+        $slug = Texture::generateSlug($request->name);
+        $data['slug'] = $slug;
+        $newtexture = Texture::create($data);
+        return redirect()->route('admin.textures.index', $newtexture->slug);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Texture  $texture
-     * @return \Illuminate\Http\Response
+     * 
      */
     public function show(Texture $texture)
     {
-        //
+        return view('admin.textures.show', compact('texture'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Texture  $texture
-     * @return \Illuminate\Http\Response
+     *
      */
     public function edit(Texture $texture)
     {
-        //
+        return view('admin.textures.edit', compact('texture'));
     }
 
     /**
@@ -71,11 +75,15 @@ class TextureController extends Controller
      *
      * @param  \App\Http\Requests\UpdateTextureRequest  $request
      * @param  \App\Models\Texture  $texture
-     * @return \Illuminate\Http\Response
+     * 
      */
     public function update(UpdateTextureRequest $request, Texture $texture)
     {
-        //
+        $data = $request->validated();
+        $slug = Texture::generateSlug($request->name);
+        $data['slug'] = $slug;
+        $texture->update($data);
+        return redirect()->route('admin.textures.index')->with('texture', "$texture->name update successfully");
     }
 
     /**
