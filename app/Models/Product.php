@@ -34,9 +34,15 @@ class Product extends Model
     {
         return $this->belongsTo(Type::class);
     }
+
+public function colors():BelongsToMany{
+        return $this->belongsToMany(Color::class);
+}
+
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
     }
+
 
 }
