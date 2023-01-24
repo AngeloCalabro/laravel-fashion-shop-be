@@ -28,5 +28,10 @@
                         <i class="fa-solid fa-users fa-lg fa-fw"></i> Brands
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.colors.index' ? 'bg-secondary' : '' }}" href="{{route('admin.colors.index')}}">
+                        <i class="fa-solid fa-palette"></i> colori
+                    </a>
+                </li>
         </ul>
     </nav>

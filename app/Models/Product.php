@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 
 class Product extends Model
@@ -32,5 +33,7 @@ class Product extends Model
     {
         return $this->belongsTo(Type::class);
     }
-
+public function colors():BelongsToMany{
+        return $this->belongsToMany(Color::class);
+}
 }
