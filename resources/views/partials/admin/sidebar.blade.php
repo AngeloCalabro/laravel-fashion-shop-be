@@ -29,8 +29,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+
                     <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.colors.index' ? 'bg-secondary' : '' }}" href="{{route('admin.colors.index')}}">
                         <i class="fa-solid fa-palette"></i> colori
+    </li>
+      <li class="nav-item">
+                    <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.tags.index' ? 'bg-secondary' : '' }}" href="{{route('admin.tags.index')}}">
+                        <i class="fa-solid fa-tags fa-lg fa-fw"></i> Tags
+
                     </a>
                 </li>
         </ul>

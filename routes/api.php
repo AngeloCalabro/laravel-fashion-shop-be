@@ -21,3 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('products', [ProductController::class, 'index']);
 Route::get('products/{slug}', [ProductController::class, 'show']);
+Route::get('brands', [BrandController::class, 'index']);
+Route::get('textures', [TextureController::class, 'index']);
+Route::get('types', [TipeController::class, 'index']);
+Route::get('colors', [ColorController::class, 'index']);
+Route::get('tags', [TagController::class, 'index']);
+

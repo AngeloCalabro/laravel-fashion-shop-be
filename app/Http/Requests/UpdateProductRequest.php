@@ -27,11 +27,11 @@ class UpdateProductRequest extends FormRequest
         return [
             'name' => ['required', Rule::unique('products')->ignore($this->product), 'min:3', 'max:50'],
             'image' => ['nullable','image','max: 2500'],
-            'description' => ['nullable'],
-            'quantity' => ['nullable'],
+            'description' => 'nullable',
+            'quantity' => 'nullable',
             'price' => ['required','min:0,01','max:9999,99'],
-            'price_sign' => ['required'],
-            'rating' => ['nullable'],
+            'price_sign' => 'required',
+            'rating' => 'nullable',
             'type_id' => 'nullable|exists:types,id',
             'brand_id' => 'nullable|exists:brands,id',
             'texture_id' => 'nullable|exists:textures,id'
