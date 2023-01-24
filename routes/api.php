@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\LeadController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProductController;
@@ -26,4 +27,6 @@ Route::get('textures', [TextureController::class, 'index']);
 Route::get('types', [TipeController::class, 'index']);
 Route::get('colors', [ColorController::class, 'index']);
 Route::get('tags', [TagController::class, 'index']);
+
+Route::post('/contacts',[LeadController::class,'store']);
 
