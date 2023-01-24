@@ -10,7 +10,7 @@
     <div class="mb-3">
         <label for="name" class="from-label">inserisci modifiche  texture </label>
         <input type="text" class="form-control @error('name') is-invalid @enderror" 
-        name="name" value="{{ old('brands', $texture->name) }}">
+        name="name" value="{{ old('types', $texture->name) }}">
         @error('name')
         <div class="invalid-feedback">{{ $message }}</div>
     @enderror
