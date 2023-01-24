@@ -31,7 +31,7 @@ class LeadController extends Controller
         $new_lead->fill($data);
         $new_lead->save();
 
-        Mail::to('info@boolpress.com')->send(new NewContact($new_lead));
+        Mail::to('info@makeapp.com')->send(new NewContact($new_lead));
         return response()->json([
             'success' => true
         ]);
