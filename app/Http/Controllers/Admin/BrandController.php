@@ -44,7 +44,7 @@ class BrandController extends Controller
         $slug = Brand::generateSlug($request->workflow);
         $data['slug'] = $slug;
         $newbrand = Brand::create($data);
-        return redirect()->route('admin.types.index', $newbrand->slug);
+        return redirect()->route('admin.brand.index', $newbrand->slug);
     }
 
     /**

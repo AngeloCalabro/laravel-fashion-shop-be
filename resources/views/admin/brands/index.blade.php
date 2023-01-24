@@ -3,7 +3,7 @@
 
     <h1>Brands</h1>
     <div class="text-end">
-        {{-- <a class="btn btn-success" href="{{route('admin.brands.create')}}">Crea nuovo brand</a> --}}
+         <a class="btn btn-success" href="{{route('admin.brands.create')}}">Crea nuovo brand</a> 
     </div>
 
     @if(session()->has('message'))
@@ -31,9 +31,9 @@
                     </td>
 
                     <td class="text-end">
-                        {{-- <a class="link-secondary" href="{{route('admin.brands.edit', $brand->slug)}}" title="Edit brand">
+                         <a class="link-secondary" href="{{route('admin.brands.edit', $brand->slug)}}" title="Edit brand">
                             <i class="fa-solid fa-pen"></i>
-                        </a> --}}
+                        </a> 
                     </td>
                     <td class="text-end">
                         <form action="{{route('admin.brands.destroy', $brand->slug)}}" method="POST">
