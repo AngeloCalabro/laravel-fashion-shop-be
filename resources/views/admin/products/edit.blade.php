@@ -15,8 +15,8 @@
 
         <h1>Edit Product: {{ $product->name }}</h1>
      <div class="edit-contain overflow-scroll">
-            
-             
+
+
              <div class="row bg-white">
          <div class="col-12">
              <form action="{{ route('admin.products.update', $product->slug) }}" method="POST" enctype="multipart/form-data"
@@ -118,7 +118,7 @@
                          <option value="">Seleziona tipologia di prodotto</option>
                          @foreach ($types as $type)
                              <option value="{{ $type->id }}" {{ $type->id == old('type_id') ? 'selected' : '' }}>
-                                 {{ $type->workflow }}</option>
+                                 {{ $type->name }}</option>
                          @endforeach
                      </select>
                      @error('type_id')
@@ -127,7 +127,7 @@
                  </div>
 
 
-       
+
                  <button type="submit" class="btn btn-success">Submit</button>
                  <button type="reset" class="btn btn-primary">Reset</button>
              </form>
