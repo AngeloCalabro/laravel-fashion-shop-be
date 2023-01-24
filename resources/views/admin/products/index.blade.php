@@ -16,10 +16,12 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Name</th>
             <th scope="col">Image</th>
+            <th scope="col">Name</th>
             <th scope="col">Description</th>
             <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Rating</th>
             <th scope="col">Category</th>
             <th scope="col">Texture</th>
             <th scope="col">Brand</th>
@@ -31,17 +33,51 @@
         @foreach($products as $product)
                 <tr>
                     <th scope="row">{{$product->id}}</th>
+
+                    <td style="width: 200px">
+                        @if ($product->image_link)
+                            <img class="w-25" src="{{ asset('storage/' . $product->image) }}" alt="{{$product->name}}">
+                        @else
+                            <small class="text-secondary">No image</small>
+                        @endif
+                    </td>
+
                     <td>
                         <a href="{{route('admin.products.show', $product->slug)}}" title="View Product">{{$product->name}}</a>
                     </td>
 
-                    <td><img class="w-25" src="{{ $product->image_link }}" alt="{{$product->name}}"></td>
-
                     <td>{{Str::limit($product->description,50)}}</td>
-                    <td>{{$product->price}} {{$product->price_sign}}</td>
-                    <td>{{$product->type ? $product->type->name : 'Senza categoria'}}</td>
-                    <td>{{$product->texture ? $product->texture->name : 'Senza texture'}}</td>
-                    <td>{{$product->brand ? $product->brand->name : 'Senza brand'}}</td>
+
+                    <td class="text-center">{{$product->price}} {{$product->price_sign}}</td>
+
+                    <td class="text-center">{{$product->quantity}}</td>
+
+                    <td class="text-center">{{$product->rating}}</td>
+
+                    <td class="text-center">
+                        @if ($product->type)
+                            {{$product->type->name}}
+                        @else
+                            <small class="text-secondary">Senza categoria</small>
+                        @endif
+                    </td>
+
+                    <td class="text-center">
+                        @if ($product->texture)
+                            {{$product->texture->name}}
+                        @else
+                            <small class="text-secondary">Senza categoria</small>
+                        @endif
+                    </td>
+
+                    <td class="text-center">
+                        @if ($product->brand)
+                            {{$product->brand->name}}
+                        @else
+                            <small class="text-secondary">Senza categoria</small>
+                        @endif
+                    </td>
+
                     <td>
                         <a class="link-secondary" href="{{route('admin.products.edit', $product->slug)}}" title="Edit product">
                             <i class="fa-solid fa-pen"></i>
@@ -60,6 +96,6 @@
 
         </tbody>
     </table>
-    {{-- {{ $products->links('vendor.pagination.bootstrap-5') }} --}}
+    {{ $products->links('vendor.pagination.bootstrap-5') }}
     @include('partials.admin.modal-delete')
 @endsection
