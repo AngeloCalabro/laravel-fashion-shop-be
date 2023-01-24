@@ -6,6 +6,7 @@
 <div class="col-12">
     <form action="{{route('admin.brands.update', $brand->slug)}}" method="POST" class="p-4">
     @csrf
+    @method('PUT')
     <div class="mb-3">
         <label for="name" class="from-label">inserisci modifiche  brand </label>
         <input type="text" class="form-control @error('name') is-invalid @enderror" 
@@ -16,9 +17,9 @@
     </div>
     <div>
         <button type="submit" class="btn btn-success">Submit</button>
-        <button type="reset" class="btn btn-primary">Reset</button>
+        <button type="reset" class="btn btn-danger">Reset</button>
         <a href="{{route('admin.brands.index')}}">
-            <button type="submit" class="btn btn-success">torna a tutti i brand</button>
+         
         </a>
     </div>
     

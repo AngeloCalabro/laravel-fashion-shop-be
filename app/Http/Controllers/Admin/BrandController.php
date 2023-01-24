@@ -44,7 +44,7 @@ class BrandController extends Controller
         $slug = Brand::generateSlug($request->name);
         $data['slug'] = $slug;
         $newbrand = Brand::create($data);
-        return redirect()->route('admin.brand.index', $newbrand->slug);
+        return redirect()->route('admin.brands.index', $newbrand->slug);
     }
 
     /**
@@ -79,7 +79,7 @@ class BrandController extends Controller
     public function update(UpdateBrandRequest $request, Brand $brand)
     {
         $data = $request->validated();
-        $slug = Brand::generateSlug($request->workflow);
+        $slug = Brand::generateSlug($request->name);
         $data['slug'] = $slug;
         $brand->update($data);
         return redirect()->route('admin.brands.index')->with('message', "$brand->name update successfully");
