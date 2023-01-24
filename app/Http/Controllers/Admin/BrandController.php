@@ -25,11 +25,11 @@ class BrandController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     *
      */
     public function create()
     {
-        //
+        return view('admin.brands.create');
     }
 
     /**
@@ -40,29 +40,33 @@ class BrandController extends Controller
      */
     public function store(StoreBrandRequest $request)
     {
-        //
+        $data = $request->validated();
+        $slug = Brand::generateSlug($request->workflow);
+        $data['slug'] = $slug;
+        $newbrand = Brand::create($data);
+        return redirect()->route('admin.types.index', $newbrand->slug);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Brand  $brand
-     * @return \Illuminate\Http\Response
+     * 
      */
     public function show(Brand $brand)
     {
-        //
+        return view('admin.brands.show', compact('brand'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Brand  $brand
-     * @return \Illuminate\Http\Response
+     *
      */
     public function edit(Brand $brand)
     {
-        //
+        return view('admin.brands.edit', compact('brand'));
     }
 
     /**
@@ -70,11 +74,15 @@ class BrandController extends Controller
      *
      * @param  \App\Http\Requests\UpdateBrandRequest  $request
      * @param  \App\Models\Brand  $brand
-     * @return \Illuminate\Http\Response
+     * 
      */
     public function update(UpdateBrandRequest $request, Brand $brand)
     {
-        //
+        $data = $request->validated();
+        $slug = Brand::generateSlug($request->workflow);
+        $data['slug'] = $slug;
+        $brand->update($data);
+        return redirect()->route('admin.brand.index')->with('message', "$brand->name update successfully");
     }
 
     /**

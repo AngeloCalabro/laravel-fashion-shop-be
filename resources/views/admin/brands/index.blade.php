@@ -26,7 +26,8 @@
                 <tr>
                     <th scope="row">{{$brand->id}}</th>
                     <td>
-                        {{$brand->name}}
+                    {{-- <a href="{{route('admin.brands.show , $brand->slug')}}">{{$brand->name}}</a> --}}
+                    <a href="{{route('admin.brands.show',$brand->slug)}}">{{$brand->name}}</a>
                     </td>
 
                     <td class="text-end">
