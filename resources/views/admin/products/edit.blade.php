@@ -15,124 +15,126 @@
 
         <h1>Edit Product: {{ $product->name }}</h1>
      <div class="edit-contain overflow-scroll">
-            
-             
-             <div class="row bg-white">
-         <div class="col-12">
-             <form action="{{ route('admin.products.update', $product->slug) }}" method="POST" enctype="multipart/form-data"
-                 class="p-4">
-                 @csrf
-                 @method('PUT')
-                 <div class="mb-3">
-                     <label for="name" class="form-label">Product Name</label>
-                     <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                         name="name" value="{{ old('name', $product->name) }}">
-                     @error('title')
-                         <div class="invalid-feedback">{{ $message }}</div>
-                     @enderror
-                 </div>
-                 <div class="mb-3">
-                     <label for="descritpion" class="form-label">Descritpion</label>
-                     <textarea class="form-control" id="descritpion" name="descritpion">{{ old('descritpion', $product->description) }}</textarea>
-                 </div>
-                 {{-- <div class="mb-3">
-                     <label for="dev_lang" class="form-label">Used Dev Languages</label>
-                     <input type="text" class="form-control @error('dev_lang') is-invalid @enderror" id="dev_lang"
-                         name="dev_lang" value="{{ old('dev_lang', $product->dev_lang) }}">
-                     @error('dev_lang')
-                         <div class="invalid-feedback">{{ $message }}</div>
-                     @enderror
-                 </div> --}}
-                 <div class="mb-3">
-                     <label for="framework" class="form-label">Price</label>
-                     <input type="number" class="form-control @error('framework') is-invalid @enderror" id="framework"
-                         name="framework" value="{{ old('framework', $product->framework) }}">
-                     @error('framework')
-                         <div class="invalid-feedback">{{ $message }}</div>
-                     @enderror
-                 </div>
-                 <div class="mb-3">
-                     <label for="team" class="form-label">Quantity</label>
-                     <input type="number" class="form-control @error('team') is-invalid @enderror" id="team"
-                         name="team" value="{{ old('team"', $product->team) }}">
-                     @error('team')
-                         <div class="invalid-feedback">{{ $message }}</div>
-                     @enderror
-                 </div>
-                 <div class="mb-3">
-                     <label for="git_link" class="form-label">GitHub Link</label>
-                     <input type="text" class="form-control @error('git_link') is-invalid @enderror" id="git_link"
-                         name="git_link" value="{{ old('git_link', $product->git_link) }}">
-                     @error('git_link')
-                         <div class="invalid-feedback">{{ $message }}</div>
-                     @enderror
-                 </div>
-                 <div>
-                     <label for="diff_lvl">Rating (da 1 a 10)</label>
-                     <select name="diff_lvl" class="form-control @error('diff_lvl') is-invalid @enderror">
-                         <option value="0" {{ old('diff_lvl', $product->diff_lvl == '0' ? 'selected' : '') }}>0
-                         </option>
-                         <option value="1" {{ old('diff_lvl', $product->diff_lvl == '1' ? 'selected' : '') }}>1
-                         </option>
-                         <option value="2" {{ old('diff_lvl', $product->diff_lvl == '2' ? 'selected' : '') }}>2
-                         </option>
-                         <option value="3" {{ old('diff_lvl', $product->diff_lvl == '3' ? 'selected' : '') }}>3
-                         </option>
-                         <option value="4" {{ old('diff_lvl', $product->diff_lvl == '4' ? 'selected' : '') }}>4
-                         </option>
-                         <option value="5" {{ old('diff_lvl', $product->diff_lvl == '5' ? 'selected' : '') }}>5
-                         </option>
-                         <option value="6" {{ old('diff_lvl', $product->diff_lvl == '6' ? 'selected' : '') }}>6
-                         </option>
-                         <option value="7" {{ old('diff_lvl', $product->diff_lvl == '7' ? 'selected' : '') }}>7
-                         </option>
-                         <option value="8" {{ old('diff_lvl', $product->diff_lvl == '8' ? 'selected' : '') }}>8
-                         </option>
-                         <option value="9" {{ old('diff_lvl', $product->diff_lvl == '9' ? 'selected' : '') }}>9
-                         </option>
-                         <option value="10" {{ old('diff_lvl', $product->diff_lvl == '10' ? 'selected' : '') }}>10
-                         </option>
-                     </select>
-                     @error('diff_lvl')
-                         <div class="invalid-feedback">{{ $message }}</div>
-                     @enderror
-                 </div>
-                 <div class="d-flex">
-                     <div class="media me-4">
-                         <img class="shadow" width="150" src="{{ asset('storage/' . $product->cover_image) }}"
-                             alt="{{ $product->name }}">
-                     </div>
-                     <div class="mb-3">
-                         <label for="cover_image" class="form-label">Replace product image</label>
-                         <input type="file" name="cover_image" id="cover_image"
-                             class="form-control  @error('cover_image') is-invalid @enderror">
-                         @error('cover_image')
-                             <div class="invalid-feedback">{{ $message }}</div>
-                         @enderror
-                     </div>
-                 </div>
-                 {{-- workflow type --}}
-                 <div class="mb-3">
-                     <label for="type_id" class="form-label">Seleziona tipologia di prodotto</label>
-                     <select name="type_id" id="type_id" class="form-control @error('type_id') is-invalid @enderror">
-                         <option value="">Seleziona tipologia di prodotto</option>
-                         @foreach ($types as $type)
-                             <option value="{{ $type->id }}" {{ $type->id == old('type_id') ? 'selected' : '' }}>
-                                 {{ $type->workflow }}</option>
-                         @endforeach
-                     </select>
-                     @error('type_id')
-                         <div class="invalid-feedback">{{ $message }}</div>
-                     @enderror
-                 </div>
 
+        <form action="{{ route('admin.products.update', $product->slug) }}" method="POST" enctype="multipart/form-data" class="p-4">
+            @csrf
+            @method('PUT')
 
-       
-                 <button type="submit" class="btn btn-success">Submit</button>
-                 <button type="reset" class="btn btn-primary">Reset</button>
-             </form>
-         </div>
-             </div>
-     </div>
+                <div class="row bg-white">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Product Name</label>
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name', $product->name)}}">
+
+                            @error('name')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" id="description" name="description">{{old('description', $product->description)}}</textarea>
+
+                            @error('description')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Price</label>
+                            <input type="number" step="0.01" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{old('price', $product->price)}}">
+
+                            @error('price')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                        <label for="price_sign" class="form-label">Price Sign</label>
+                        <select name="price_sign" id="price_sign" class="form-control" required>
+                            <option class="text-capitalize" default value="$">$</option>
+                            <option class="text-capitalize" value="€">€</option>
+                        </select>
+                    </div>
+
+                        <div class="mb-3">
+                            <label for="quantity" class="form-label">Quantity</label>
+                            <input type="number" class="form-control @error('quantity') is-invalid @enderror" id="quantity" name="quantity" value="{{old('quantity', $product->quantity)}}">
+
+                            @error('quantity')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="rating">Rating</label>
+                            <select name="rating" class="form-control @error('rating') is-invalid @enderror">
+                                <option class="text-capitalize" value="">Select rating</option>
+                                @for ($i = 1; $i < 11; $i++)
+                                    <option value="{{$i}}" {{ $i == old('rating', $i) ? 'selected' : '' }} class="text-capitalize">{{$i}}</option>
+                                @endfor
+                            </select>
+
+                            @error('rating')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Immagine</label>
+                            <input type="file" name="image" id="image"
+                                class="form-control  @error('image') is-invalid @enderror">
+
+                            @error('image')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="type_id" class="form-label">Types</label>
+                            <select name="type_id" id="type_id" class="form-control">
+                                <option class="text-capitalize" value="">Select types</option>
+                                @foreach ($types as $type)
+                                    <option value="{{$type->id}}" {{ $type->id == old('type_id', $product->type_id) ? 'selected' : '' }} class="text-capitalize">{{$type->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="texture_id" class="form-label">Textures</label>
+                            <select name="texture_id" id="texture_id" class="form-control">
+                                <option class="text-capitalize" value="">Select textures</option>
+                                @foreach ($textures as $texture)
+                                    <option value="{{$texture->id}}" {{ $texture->id == old('texture_id', $product->texture_id) ? 'selected' : '' }} class="text-capitalize">{{$texture->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="brand_id" class="form-label">Brands</label>
+                            <select name="brand_id" id="brand_id" class="form-control">
+                                <option class="text-capitalize" value="">Select brands</option>
+                                @foreach ($brands as $brand)
+                                    <option value="{{$brand->id}}" {{ $brand->id == old('brand_id', $product->brand_id) ? 'selected' : '' }} class="text-capitalize">{{$brand->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success">Modifica</button>
+                <button type="reset" class="btn btn-warning">Reset</button>
+            </div>
+
+        </form>
+
+        <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript">
+        </script>
+        <script type="text/javascript">
+          bkLib.onDomLoaded(nicEditors.allTextAreas);
+        </script>
 
 @endsection
