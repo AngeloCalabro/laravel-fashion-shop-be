@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-<h1>Add a new Brand</h1>
+<h1>Add a new Tag</h1>
 <div class="row bg-white">
 <div class="col-12">
     <form action="{{route('admin.tags.store')}}" method="POST" class="p-4">
