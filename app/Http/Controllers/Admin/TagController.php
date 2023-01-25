@@ -27,7 +27,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('admin.tags.create');
+        // return view('admin.tags.create');
     }
 
     /**
@@ -41,7 +41,12 @@ class TagController extends Controller
         $data = $request->validated();
         $slug = Tag::generateSlug($request->name);
         $data['slug'] = $slug;
+
         $newtag = Tag::create($data);
+        if($request->has('products')){
+            $newtag->products()->attach($request->products);
+        }
+
         return redirect()->route('admin.tags.index', $newtag->slug);
     }
 
@@ -54,7 +59,7 @@ class TagController extends Controller
     public function show(Tag $tag)
     {
 
-        return view('admin.tags.show', compact('tag'));
+        // return view('admin.tags.show', compact('tag'));
     }
 
     /**
@@ -65,7 +70,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        return view('admin.tags.edit', compact('tag'));
+        // return view('admin.tags.edit', compact('tag'));
     }
 
     /**
@@ -80,7 +85,15 @@ class TagController extends Controller
         $data = $request->validated();
         $slug = Tag::generateSlug($request->name);
         $data['slug'] = $slug;
+
         $tag->update($data);
+
+        if($request->has('products')){
+            $tag->products()->sync($request->products);
+        } else {
+            $tag->products()->sync([]);
+        }
+
         return redirect()->route('admin.tags.index')->with('message', "$tag->name update successfully");
     }
 
@@ -88,7 +101,7 @@ class TagController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Tag  $tag
-     * @return \Illuminate\Http\Response
+     *
      */
     public function destroy(Tag $tag)
     {
