@@ -59,6 +59,10 @@ class ProductController extends Controller
         }
 
         $newproduct = Product::create($data);
+        if($request->has('tags')){
+            $newproduct->tags()->attach($request->tags);
+        }
+
         return redirect()->route('admin.products.show', $newproduct->slug);
     }
 
@@ -110,6 +114,12 @@ class ProductController extends Controller
         }
 
         $product->update($data);
+
+        if($request->has('tags')){
+            $product->tags()->sync($request->tags);
+        } else {
+            $product->tags()->sync([]);
+        }
 
         return redirect()->route('admin.products.index')->with('message', "$product->name update successfully");
     }

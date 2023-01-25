@@ -2,7 +2,8 @@
 @section('content')
     <h1>Tag</h1>
     <div class="text-end">
-        <a class="btn btn-success" href="{{ route('admin.tags.create') }}">Crea nuovo tag</a>
+        {{-- <a class="btn btn-success" href="{{ route('admin.tags.create') }}">Crea nuovo tag</a> --}}
+        <a class="btn btn-success" href="">Crea nuovo tag</a>
     </div>
 
     @include('partials.admin.error-session')
@@ -22,15 +23,19 @@
                 <tr>
                     <th scope="row">{{ $tag->id }}</th>
                     <td>
-                        <a href="{{ route('admin.tags.show', $tag->slug) }}">{{ $tag->name }}</a>
+                        {{-- <a href="{{ route('admin.tags.show', $tag->slug) }}">{{ $tag->name }}</a> --}}
+                        <span>{{ $tag->name }}</span>
                     </td>
 
                     <td>
-                        {{-- {{count($tag->products)}} --}}
+                        {{count($tag->products) > 0 ? count($tag->products) : 0}}
                     </td>
 
                     <td class="text-end">
-                        <a class="link-secondary" href="{{ route('admin.tags.edit', $tag->slug) }}" title="Edit tag">
+                        {{-- <a class="link-secondary" href="{{ route('admin.tags.edit', $tag->slug) }}" title="Edit tag">
+                            <i class="fa-solid fa-pen"></i>
+                        </a> --}}
+                        <a class="link-secondary" href="" title="Edit tag">
                             <i class="fa-solid fa-pen"></i>
                         </a>
                     </td>
