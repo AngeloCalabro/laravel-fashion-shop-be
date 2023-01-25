@@ -2,7 +2,7 @@
 @section('content')
     <h1>colors</h1>
     <div class="text-end">
-        <a class="btn btn-success" href="{{ route('admin.colors.create') }}">Crea nuovo color</a>
+        <a class="btn btn-success" href="{{ route('admin.colors.create') }}">Crea nuovo colore</a>
     </div>
 
     @if (session()->has('message'))
@@ -26,11 +26,9 @@
                 <tr>
                     <th scope="row">{{ $color->id }}</th>
                     <td>
-                        {{-- <a href="{{route('admin.colors.show , $color->slug')}}">{{$color->name}}</a> --}}
                         <a href="{{ route('admin.colors.show', $color->slug) }}">{{ $color->name }}</a>
                     </td>
                     <td>
-                        {{-- <a href="{{route('admin.colors.show , $color->slug')}}">{{$color->name}}</a> --}}
                         {{ $color->hex_value }}
                     </td>
 
@@ -54,6 +52,6 @@
 
         </tbody>
     </table>
-    {{ $colors->links('vendor.pagination.bootstrap-5') }} 
+    {{ $colors->links('vendor.pagination.bootstrap-5') }}
     @include('partials.admin.modal-delete')
 @endsection
