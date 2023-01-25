@@ -2,7 +2,7 @@
 @section('content')
     <h1>Brands</h1>
     <div class="text-end">
-        <a class="btn btn-success" href="{{ route('admin.brands.create') }}">Crea nuovo brand</a>
+        <a class="btn btn-success" href="{{ route('admin.brands.create') }}">Crea un nuovo brand</a>
     </div>
 
     @if (session()->has('message'))

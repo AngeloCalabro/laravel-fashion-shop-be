@@ -8,7 +8,7 @@
     @csrf
     @method('PUT')
     <div class="mb-3">
-        <label for="name" class="from-label">inserisci modifiche  brand </label>
+        <label for="name" class="from-label">Inserisci le modifiche al brand </label>
         <input type="text" class="form-control @error('name') is-invalid @enderror" 
         name="name" value="{{ old('brands', $brand->name) }}">
         @error('name')

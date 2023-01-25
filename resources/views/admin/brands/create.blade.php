@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 @section('content')
-<h1>Add  a new Brand</h1>
+<h1>Add a new Brand</h1>
 <div class="row bg-white">
 <div class="col-12">
     <form action="{{route('admin.brands.store')}}" method="POST" class="p-4">
     @csrf
     <div class="mb-3">
-        <label for="name" class="from-label">inserisci un nuovo brand </label>
+        <label for="name" class="from-label">Inserisci un nuovo brand </label>
         <input type="text" class="form-control @error('name') is-invalid @enderror" 
         name="name">
         @error('name')
