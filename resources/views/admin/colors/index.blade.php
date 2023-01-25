@@ -2,7 +2,7 @@
 @section('content')
     <h1>Colors</h1>
     <div class="text-end">
-        <a class="btn btn-success" href="{{ route('admin.colors.create') }}">Crea nuovo colore</a>
+        <a class="btn btn-success" href="#nogo">Crea nuovo colore</a>
     </div>
 
     @include('partials.admin.error-session')
@@ -13,6 +13,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Color code</th>
+                <th scope="col">Count</th>
                 <th scope="col" class="text-end">Edit</th>
                 <th scope="col" class="text-end">Delete</th>
             </tr>
@@ -22,14 +23,17 @@
                 <tr>
                     <th scope="row">{{ $color->id }}</th>
                     <td>
-                        <a href="{{ route('admin.colors.show', $color->slug) }}">{{ $color->name }}</a>
+                      {{ $color->name }}
                     </td>
                     <td>
                         {{ $color->hex_value }}
                     </td>
+                    <td>
+                        {{ count($color->products ) > 0 ? count($color->products) : 0}}
+                    </td>
 
                     <td class="text-end">
-                        <a class="link-secondary" href="{{ route('admin.colors.edit', $color->slug) }}" title="Edit color">
+                        <a class="link-secondary" href="#nogo" title="Edit color">
                             <i class="fa-solid fa-pen"></i>
                         </a>
                     </td>

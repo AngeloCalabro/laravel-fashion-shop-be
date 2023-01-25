@@ -126,6 +126,19 @@
                         @enderror
                       </div>
 
+                      <div class="mb-3">
+                        <label for="colors" class="form-label">Seleziona colore</label><br>
+                        @foreach ($colors as $color)
+                            <input type="checkbox" name="colors[]" value="{{$color->id}}">
+                            <span class="text-capitalize">{{$color->name}}</span>
+                        @endforeach
+
+                        @error('colors')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                      </div>
+
+
                 </div>
             </div>
 
