@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 @section('content')
-<h1>Add  a new texture</h1>
+<h1>Add a new texture</h1>
 <div class="row bg-white">
 <div class="col-12">
     <form action="{{route('admin.textures.store')}}" method="POST" class="p-4">
     @csrf
     <div class="mb-3">
-        <label for="name" class="from-label">inserisci una nuova texture </label>
+        <label for="name" class="from-label">Inserisci una nuova texture </label>
         <input type="text" class="form-control @error('name') is-invalid @enderror" 
         name="name">
         @error('name')

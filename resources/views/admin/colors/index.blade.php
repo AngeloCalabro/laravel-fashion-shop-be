@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <h1>colors</h1>
+    <h1>Colors</h1>
     <div class="text-end">
         <a class="btn btn-success" href="{{ route('admin.colors.create') }}">Crea nuovo colore</a>
     </div>
