@@ -40,3 +40,21 @@ $fa-font-path: "../fonts/font-awesome" !default;
 .image-container{
     width: 50px;
 }
+
+//Style Dashboard
+.dashboard-list{
+    list-style: none;
+
+    li{
+        background-color: transparent;
+    } :hover{
+        background-color: transparent;
+    }
+}
+
+.nav-dashboard{
+    a{
+        text-decoration: none;
+        color: black;
+    }
+}
