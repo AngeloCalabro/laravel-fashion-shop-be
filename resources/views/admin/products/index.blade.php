@@ -6,12 +6,7 @@
         <a class="btn btn-success" href="{{route('admin.products.create')}}">Crea nuovo prodotto</a>
     </div>
 
-    @if(session()->has('message'))
-    <div class="alert alert-success mb-3 mt-3">
-        {{ session()->get('message') }}
-    </div>
-    @endif
-
+   @include('partials.admin.error-session')
 
     <table class="table table-striped">
         <thead>

@@ -5,11 +5,7 @@
         <a class="btn btn-success" href="{{ route('admin.colors.create') }}">Crea nuovo colore</a>
     </div>
 
-    @if (session()->has('message'))
-        <div class="alert alert-success mb-3 mt-3">
-            {{ session()->get('message') }}
-        </div>
-    @endif
+    @include('partials.admin.error-session')
 
     <table class="table table-striped">
         <thead>
