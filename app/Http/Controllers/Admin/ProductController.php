@@ -64,6 +64,10 @@ class ProductController extends Controller
         if($request->has('tags')){
             $newproduct->tags()->attach($request->tags);
         }
+        if($request->has('colors')){
+            $newproduct->colors()->attach($request->colors);
+        }
+        
 
         return redirect()->route('admin.products.show', $newproduct->slug);
     }
@@ -122,6 +126,12 @@ class ProductController extends Controller
             $product->tags()->sync($request->tags);
         } else {
             $product->tags()->sync([]);
+        }
+
+        if($request->has('colors')){
+            $product->colors()->sync($request->colors);
+        } else {
+            $product->colors()->sync([]);
         }
 
         return redirect()->route('admin.products.index')->with('message', "$product->name update successfully");

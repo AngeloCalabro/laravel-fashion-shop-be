@@ -28,7 +28,7 @@ class ColorController extends Controller
      */
     public function create()
     {
-        return view('admin.colors.create');
+       // return view('admin.colors.create');
     }
 
     /**
@@ -54,7 +54,7 @@ class ColorController extends Controller
      */
     public function show(Color $color)
     {
-        return view('admin.colors.show', compact('color'));
+        //return view('admin.colors.show', compact('color'));
     }
 
     /**
@@ -65,7 +65,7 @@ class ColorController extends Controller
      */
     public function edit(Color $color)
     {
-        return view('admin.colors.edit', compact('color'));
+        //return view('admin.colors.edit', compact('color'));
     }
 
     /**
