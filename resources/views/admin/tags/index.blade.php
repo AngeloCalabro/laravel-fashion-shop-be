@@ -2,7 +2,7 @@
 @section('content')
     <h1>Tag</h1>
     <div class="text-end">
-        <a class="btn btn-success" href="{{ route('admin.tags.create') }}">Crea nuovo brand</a>
+        <a class="btn btn-success" href="{{ route('admin.tags.create') }}">Crea nuovo tag</a>
     </div>
 
     @if (session()->has('message'))

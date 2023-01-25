@@ -8,7 +8,7 @@
     @csrf
     @method('PUT')
     <div class="mb-3">
-        <label for="name" class="from-label">inserisci modifiche  tag </label>
+        <label for="name" class="from-label">inserisci modifiche tag </label>
         <input type="text" class="form-control @error('name') is-invalid @enderror"
         name="name" value="{{ old('tags', $tag->name) }}">
         @error('name')
