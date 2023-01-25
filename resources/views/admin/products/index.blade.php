@@ -22,6 +22,7 @@
             <th scope="col">Texture</th>
             <th scope="col">Brand</th>
             <th scope="col">Tag</th>
+            <th scope="col">Color</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
         </tr>
@@ -77,6 +78,9 @@
 
                     <td class="text-center">
                         {{count($product->tags) > 0 ? count($product->tags) : 0}}
+                    </td>
+                    <td class="text-center">
+                        {{count($product->colors) > 0 ? count($product->colors) : 0}}
                     </td>
 
                     <td>

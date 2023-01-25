@@ -2,7 +2,7 @@
 @section('content')
     <h1>Colors</h1>
     <div class="text-end">
-        <a class="btn btn-success" href="{{ route('admin.colors.create') }}">Crea nuovo colore</a>
+        <a class="btn btn-success" href="#nogo">Crea nuovo colore</a>
     </div>
 
     @include('partials.admin.error-session')

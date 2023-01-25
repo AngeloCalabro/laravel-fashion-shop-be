@@ -10,6 +10,7 @@ use App\Models\Brand;
 use App\Models\Texture;
 use App\Models\Type;
 use App\Models\Tag;
+use App\Models\Color;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -40,7 +41,8 @@ class ProductController extends Controller
         $textures = Texture::all();
         $types = Type::all();
         $tags = Tag::all();
-        return view('admin.products.create', compact('brands', 'textures', 'types', 'tags', 'product'));
+        $colors = Color::all();
+        return view('admin.products.create', compact('brands', 'textures', 'types', 'tags','colors', 'product'));
     }
 
     /**
@@ -95,7 +97,8 @@ class ProductController extends Controller
         $textures = Texture::all();
         $types = Type::all();
         $tags = Tag::all();
-        return view('admin.products.edit', compact('brands', 'textures', 'types', 'tags', 'product'));
+        $colors = Color::all();
+        return view('admin.products.edit', compact('brands', 'textures', 'types', 'tags','colors', 'product'));
     }
 
     /**
