@@ -21,6 +21,7 @@
             <th scope="col">Category</th>
             <th scope="col">Texture</th>
             <th scope="col">Brand</th>
+            <th scope="col">Tag</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
         </tr>
@@ -30,9 +31,9 @@
                 <tr>
                     <th scope="row">{{$product->id}}</th>
 
-                    <td style="width: 200px">
+                    <td>
                         @if ($product->image_link)
-                            <img class="w-25" src="{{ asset('storage/' . $product->image) }}" alt="{{$product->name}}">
+                            <img class="image-container" src="{{ asset('storage/' . $product->image) }}" alt="{{$product->name}}">
                         @else
                             <small class="text-secondary">No image</small>
                         @endif
@@ -72,6 +73,10 @@
                         @else
                             <small class="text-secondary">Senza categoria</small>
                         @endif
+                    </td>
+
+                    <td class="text-center">
+                        {{count($product->tags) > 0 ? count($product->tags) : 0}}
                     </td>
 
                     <td>

@@ -7,7 +7,9 @@
         @csrf
 
             <div class="row bg-white">
+
                 <div class="col-6">
+
                     <div class="mb-3">
                         <label for="name" class="form-label">Product Name</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name">
@@ -56,6 +58,7 @@
                 </div>
 
                 <div class="col-6">
+
                     <div class="mb-3">
                         <label for="rating">Rating</label>
                         <select name="rating" class="form-control @error('rating') is-invalid @enderror">
@@ -110,6 +113,19 @@
                             @endforeach
                         </select>
                     </div>
+
+                    <div class="mb-3">
+                        <label for="tags" class="form-label">Seleziona tag</label><br>
+                        @foreach ($tags as $tag)
+                            <input type="checkbox" name="tags[]" value="{{$tag->id}}">
+                            <span class="text-capitalize">{{$tag->name}}</span>
+                        @endforeach
+
+                        @error('tags')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                      </div>
+
                 </div>
             </div>
 

@@ -43,6 +43,10 @@ class TagController extends Controller
         $data['slug'] = $slug;
 
         $newtag = Tag::create($data);
+        if($request->has('products')){
+            $newtag->products()->attach($request->products);
+        }
+
         return redirect()->route('admin.tags.index', $newtag->slug);
     }
 
@@ -81,7 +85,14 @@ class TagController extends Controller
         $data = $request->validated();
         $slug = Tag::generateSlug($request->name);
         $data['slug'] = $slug;
+
         $tag->update($data);
+
+        if($request->has('products')){
+            $tag->products()->sync($request->products);
+        } else {
+            $tag->products()->sync([]);
+        }
 
         return redirect()->route('admin.tags.index')->with('message', "$tag->name update successfully");
     }

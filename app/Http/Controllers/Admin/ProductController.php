@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Models\Brand;
 use App\Models\Texture;
 use App\Models\Type;
+use App\Models\Tag;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -38,7 +39,8 @@ class ProductController extends Controller
         $brands = Brand::all();
         $textures = Texture::all();
         $types = Type::all();
-        return view('admin.products.create', compact('brands', 'textures', 'types', 'product'));
+        $tags = Tag::all();
+        return view('admin.products.create', compact('brands', 'textures', 'types', 'tags', 'product'));
     }
 
     /**
@@ -88,7 +90,8 @@ class ProductController extends Controller
         $brands = Brand::all();
         $textures = Texture::all();
         $types = Type::all();
-        return view('admin.products.edit', compact('brands', 'textures', 'types', 'product'));
+        $tags = Tag::all();
+        return view('admin.products.edit', compact('brands', 'textures', 'types', 'tags', 'product'));
     }
 
     /**
