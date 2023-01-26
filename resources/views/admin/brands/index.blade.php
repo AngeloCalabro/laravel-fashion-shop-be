@@ -24,7 +24,7 @@
             @foreach ($brands as $brand)
                 <tr>
                     <th scope="row">{{ $brand->id }}</th>
-                    <td>
+                    <td class="text-capitalize">
                         {{-- <a href="{{route('admin.brands.show , $brand->slug')}}">{{$brand->name}}</a> --}}
                         <a href="{{ route('admin.brands.show', $brand->slug) }}">{{ $brand->name }}</a>
                     </td>

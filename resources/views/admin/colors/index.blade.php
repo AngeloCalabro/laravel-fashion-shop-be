@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <h1>Colors</h1>
+    <h1>Colori</h1>
     <div class="text-end">
         <a class="btn btn-success" href="{{ route('admin.colors.create') }}">Crea nuovo colore</a>
     </div>
@@ -25,7 +25,7 @@
             @foreach ($colors as $color)
                 <tr>
                     <th scope="row">{{ $color->id }}</th>
-                    <td>
+                    <td class="text-capitalize">
                         <a href="{{ route('admin.colors.show', $color->slug) }}">{{ $color->name }}</a>
                     </td>
                     <td>

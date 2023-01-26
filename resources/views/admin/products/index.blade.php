@@ -43,7 +43,7 @@
                         @endif
                     </td>
 
-                    <td>
+                    <td class="text-capitalize">
                         <a href="{{route('admin.products.show', $product->slug)}}" title="View Product">{{$product->name}}</a>
                     </td>
 
