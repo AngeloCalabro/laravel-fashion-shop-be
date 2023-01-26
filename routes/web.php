@@ -8,10 +8,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\TextureController;
 use App\Http\Controllers\Admin\TypeController;
-
 use App\Http\Controllers\Admin\ColorController;
-
-
 use App\Http\Controllers\Admin\TagController;
 
 /*
@@ -45,10 +42,8 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     Route::resource('brands', BrandController::class)->parameters(['brands' => 'brand:slug']);
     Route::resource('textures', TextureController::class)->parameters(['textures' => 'texture:slug']);
     Route::resource('types', TypeController::class)->parameters(['types' => 'type:slug']);
-
-    Route::resource('colors', ColorController::class)->parameters(['colors' => 'color:slug']);
-
-    Route::resource('tags', TagController::class)->parameters(['tags' => 'tag:slug']);
+    Route::resource('colors', ColorController::class)->parameters(['colors' => 'color:slug'])->except('show', 'create', 'edit');;
+    Route::resource('tags', TagController::class)->parameters(['tags' => 'tag:slug'])->except('show', 'create', 'edit');
 
 });
 

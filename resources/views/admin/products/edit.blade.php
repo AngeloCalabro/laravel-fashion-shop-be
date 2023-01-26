@@ -1,17 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
-    {{-- <div>
-            @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
-        </div> --}}
+
+@include('partials.admin.error-session')
 
         <h1>Edit Product: {{ $product->name }}</h1>
      <div class="edit-contain overflow-scroll">
@@ -68,6 +59,7 @@
                     </div>
 
                     <div class="col-6">
+
                         <div class="mb-3">
                             <label for="rating">Rating</label>
                             <select name="rating" class="form-control @error('rating') is-invalid @enderror">
@@ -83,6 +75,7 @@
                         </div>
 
                         <div class="mb-3">
+                            <img id="uploadPreview" width="100" src="https://via.placeholder.com/300x200">
                             <label for="image" class="form-label">Immagine</label>
                             <input type="file" name="image" id="image"
                                 class="form-control  @error('image') is-invalid @enderror">
@@ -121,6 +114,32 @@
                                 @endforeach
                             </select>
                         </div>
+
+                        <div class="mb-3">
+                            <label for="tags" class="form-label">Seleziona tag</label><br>
+                            @foreach ($tags as $tag)
+                                <input type="checkbox" name="tags[]" id="{{$tag->slug}}" value="{{$tag->id}}" {{old('tags', $product->tags) ? (old('tags', $product->tags)->contains($tag->id)) ? 'checked' : '' : ''}}>
+                                <span class="text-capitalize">{{$tag->name}}</span>
+                            @endforeach
+
+                            @error('tags')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                      </div>
+
+
+                      <div class="mb-3">
+                        <label for="colors" class="form-label">Seleziona colore</label><br>
+                        @foreach ($colors as $color)
+                            <input type="checkbox" name="colors[]" id="{{$color->slug}}" value="{{$color->id}}" {{old('colors', $product->colors) ? (old('colors', $product->colors)->contains($color->id)) ? 'checked' : '' : ''}}>
+                            <span class="text-capitalize">{{$color->name}}</span>
+                        @endforeach
+
+                        @error('colors')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                  </div>
+
                     </div>
                 </div>
 

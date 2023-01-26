@@ -9,6 +9,8 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Models\Brand;
 use App\Models\Texture;
 use App\Models\Type;
+use App\Models\Tag;
+use App\Models\Color;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -38,7 +40,9 @@ class ProductController extends Controller
         $brands = Brand::all();
         $textures = Texture::all();
         $types = Type::all();
-        return view('admin.products.create', compact('brands', 'textures', 'types', 'product'));
+        $tags = Tag::all();
+        $colors = Color::all();
+        return view('admin.products.create', compact('brands', 'textures', 'types', 'tags','colors', 'product'));
     }
 
     /**
@@ -59,6 +63,14 @@ class ProductController extends Controller
         }
 
         $newproduct = Product::create($data);
+        if($request->has('tags')){
+            $newproduct->tags()->attach($request->tags);
+        }
+        if($request->has('colors')){
+            $newproduct->colors()->attach($request->colors);
+        }
+        
+
         return redirect()->route('admin.products.show', $newproduct->slug);
     }
 
@@ -84,7 +96,9 @@ class ProductController extends Controller
         $brands = Brand::all();
         $textures = Texture::all();
         $types = Type::all();
-        return view('admin.products.edit', compact('brands', 'textures', 'types', 'product'));
+        $tags = Tag::all();
+        $colors = Color::all();
+        return view('admin.products.edit', compact('brands', 'textures', 'types', 'tags','colors', 'product'));
     }
 
     /**
@@ -110,6 +124,18 @@ class ProductController extends Controller
         }
 
         $product->update($data);
+
+        if($request->has('tags')){
+            $product->tags()->sync($request->tags);
+        } else {
+            $product->tags()->sync([]);
+        }
+
+        if($request->has('colors')){
+            $product->colors()->sync($request->colors);
+        } else {
+            $product->colors()->sync([]);
+        }
 
         return redirect()->route('admin.products.index')->with('message', "$product->name update successfully");
     }
