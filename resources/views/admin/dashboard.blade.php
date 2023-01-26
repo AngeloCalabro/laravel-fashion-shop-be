@@ -9,7 +9,7 @@
             <img src="{{url('/logo-app-black.png')}}" alt="Image" width="200px" />
             </div>
                 <div class="card-header">
-                    <p>Benvenuto {{ Auth::user()->name }} </p>
+                    <p>Benvenuto <span class="text-capitalize">{{ Auth::user()->name }} </span></p>
                     <p>Questa è la tua {{ __('dashboard') }}</p></div>
 
                 <div class="card-body">
