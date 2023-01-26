@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use App\Models\Texture;
 
+
 class TextureSeeder extends Seeder
 {
     /**
