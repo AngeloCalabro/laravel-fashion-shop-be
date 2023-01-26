@@ -12,16 +12,16 @@ class ProductController extends Controller
     public function index(Request $request){
         $brand_filter = $request->query('brandFilter');
         $type_filter = $request->query('typeFilter');
-        $category_filter = $request->query('categoryFilter');
+        $texture_filter = $request->query('textureFilter');
         $products = Product::when(!empty($type_filter), function ($q) {
             $q->where('type_id', request('typeFilter'));
         })
-        ->when(!empty($category_filter), function ($q) {
-            $q->where('category_id', request('categoryFilter'));
+        ->when(!empty($texture_filter), function ($q) {
+            $q->where('texture_id', request('textureFilter'));
         })
         ->when(!empty($brand_filter), function ($q) {
             $q->where('brand_id', request('brandFilter'));
-        })->paginate(5);
+        })->get();
         
         return response()->json([
 
