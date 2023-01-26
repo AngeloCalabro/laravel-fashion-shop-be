@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Tag;
 use App\Http\Requests\StoreTagRequest;
 use App\Http\Requests\UpdateTagRequest;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class TagController extends Controller
 {
@@ -47,7 +49,8 @@ class TagController extends Controller
             $newtag->products()->attach($request->products);
         }
 
-        return redirect()->route('admin.tags.index', $newtag->slug);
+        // return redirect()->route('admin.tags.index', $newtag->slug);
+        return redirect()->route('admin.tags.index')->with('message', "$newtag->name update successfully");
     }
 
     /**
@@ -82,19 +85,29 @@ class TagController extends Controller
      */
     public function update(UpdateTagRequest $request, Tag $tag)
     {
-        $data = $request->validated();
+        $validator = $this->updateValidation($request->all(),$tag);
+        if ($validator->fails()) {
+            return redirect()->back()->with('tag_id',$tag->id)->withErrors($validator, "update_errors");
+        }
+        $data = $validator->validated();
         $slug = Tag::generateSlug($request->name);
         $data['slug'] = $slug;
-
         $tag->update($data);
-
-        if($request->has('products')){
-            $tag->products()->sync($request->products);
-        } else {
-            $tag->products()->sync([]);
-        }
-
         return redirect()->route('admin.tags.index')->with('message', "$tag->name update successfully");
+
+        // $data = $request->validated();
+        // $slug = Tag::generateSlug($request->name);
+        // $data['slug'] = $slug;
+
+        // $tag->update($data);
+
+        // if($request->has('products')){
+        //     $tag->products()->sync($request->products);
+        // } else {
+        //     $tag->products()->sync([]);
+        // }
+
+        // return redirect()->route('admin.tags.index')->with('message', "$tag->name update successfully");
     }
 
     /**
@@ -107,5 +120,30 @@ class TagController extends Controller
     {
         $tag->delete();
         return redirect()->route('admin.tags.index')->with('message', "$tag->name deleted successfully");
+    }
+
+    private function storeValidation($request){
+        $rules = [
+            'name' => 'required|unique:tags|max:45'
+        ];
+        $messages = [
+            'name.required' => 'il nome è obbligatorio',
+            'name.unique' => 'il nome esiste già',
+            'name.max' => 'il nome non può superare i :max caratteri',
+        ];
+        $validator = Validator::make($request, $rules , $messages);
+        return $validator;
+    }
+    private function updateValidation($request, $tag){
+        $rules = [
+            'name' => ['required',Rule::unique('tags')->ignore($tag),'max:45']
+        ];
+        $messages = [
+            'name.required' => 'il nome è obbligatorio',
+            'name.unique' => 'il nome esiste già',
+            'name.max' => 'il nome non può superare i :max caratteri',
+        ];
+        $validator = Validator::make($request, $rules , $messages);
+        return $validator;
     }
 }

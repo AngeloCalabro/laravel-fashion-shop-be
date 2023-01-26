@@ -4,5 +4,3 @@
             {{ session()->get('message') }}
         </div>
     @endif
-
-
