@@ -628,7 +628,7 @@ return [
             "id" => 1028,
             "brand_id" => 30,
             "name" => "Pressed Foundation",
-            "price" => "23.9",
+            "price" => "23.8",
             "price_sign" => "$",
             "currency" => "USD",
             "image_link" => "https://www.purpicks.com/wp-content/uploads/csm/caramel_1024x1024_e5fbf151-0cfd-42c9-a5ec-f49d6104bcbc1.jpg",
