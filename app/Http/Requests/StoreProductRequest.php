@@ -44,8 +44,8 @@ class StoreProductRequest extends FormRequest
             'name.max' => 'Il nome non può superare i :max caratteri.',
             'name.unique:products' => 'Il nome esiste già',
             'price.required' => 'Il prezzo è obbligatorio.',
-            'price.min' => 'Il prezo deve essere almeno :min.',
-            'price.max' => 'Il prezo non può superare i :max.',
+            'price.min' => 'Il prezzo deve essere almeno :min.',
+            'price.max' => 'Il prezzo non può superare i :max.',
         ];
     }
 }
