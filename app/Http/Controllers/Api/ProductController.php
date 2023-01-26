@@ -21,7 +21,7 @@ class ProductController extends Controller
         })
         ->when(!empty($brand_filter), function ($q) {
             $q->where('brand_id', request('brandFilter'));
-        })->get();
+        })->with('type', 'texture', 'brand')->get();
         
         return response()->json([
 
