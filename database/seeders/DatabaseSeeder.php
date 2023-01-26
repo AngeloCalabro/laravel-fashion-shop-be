@@ -21,12 +21,12 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call([
-            // BrandSeeder::class,
-            // TextureSeeder::class,
-            // TypeSeeder::class,
-            // ProductSeeder::class,
-            // ColorSeeder::class,
-            // TagSeeder::class
+            BrandSeeder::class,
+            TextureSeeder::class,
+            TypeSeeder::class,
+            ProductSeeder::class,
+            ColorSeeder::class,
+            TagSeeder::class
         ]);
     }
 }
