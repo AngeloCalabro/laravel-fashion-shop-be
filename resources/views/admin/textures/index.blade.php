@@ -20,7 +20,7 @@
             @foreach ($textures as $texture)
                 <tr>
                     <th scope="row">{{ $texture->id }}</th>
-                    <td>
+                    <td class="text-capitalize">
                         <a href="{{ route('admin.textures.show', $texture->slug) }}">{{ $texture->name }}</a>
                     </td>
 

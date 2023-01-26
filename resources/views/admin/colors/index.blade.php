@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <h1>Colors</h1>
+    <h1>Colori</h1>
     <div class="text-end">
         <a class="btn btn-success" href="#nogo">Crea nuovo colore</a>
     </div>
@@ -22,8 +22,9 @@
             @foreach ($colors as $color)
                 <tr>
                     <th scope="row">{{ $color->id }}</th>
-                    <td>
-                      {{ $color->name }}
+
+                    <td class="text-capitalize">
+                        <a href="#">{{ $color->name }}</a>
                     </td>
                     <td>
                         {{ $color->hex_value }}

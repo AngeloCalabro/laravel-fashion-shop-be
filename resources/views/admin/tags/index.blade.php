@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <h1>Tag</h1>
+    <h1>Tags</h1>
     <div class="text-end">
         {{-- <a class="btn btn-success" href="{{ route('admin.tags.create') }}">Crea nuovo tag</a> --}}
         <a class="btn btn-success" href="">Crea nuovo tag</a>
@@ -22,9 +22,8 @@
             @foreach ($tags as $tag)
                 <tr>
                     <th scope="row">{{ $tag->id }}</th>
-                    <td>
-                        {{-- <a href="{{ route('admin.tags.show', $tag->slug) }}">{{ $tag->name }}</a> --}}
-                        <span>{{ $tag->name }}</span>
+                    <td class="text-capitalize">
+                        <a href="#">{{ $tag->name }}</a>
                     </td>
 
                     <td>

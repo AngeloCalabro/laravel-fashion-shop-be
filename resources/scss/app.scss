@@ -10,10 +10,13 @@ $fa-font-path: "../fonts/font-awesome" !default;
 
 #admin {
     height: 100vh;
+    width: 100%;
     display: flex;
+    position: fixed;
 
     #wrapper {
         flex-grow: 1;
+        overflow-y: auto;
 
         header {
             min-height: 70px;

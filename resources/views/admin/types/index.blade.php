@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <h1>Categories</h1>
+    <h1>Types</h1>
     <div class="text-end">
         <a class="btn btn-success" href="{{ route('admin.types.create') }}">Crea nuovo categoria</a>
     </div>
@@ -24,7 +24,7 @@
             @foreach ($types as $type)
                 <tr>
                     <th scope="row">{{ $type->id }}</th>
-                    <td>
+                    <td class="text-capitalize">
                         <a href="{{ route('admin.types.show', $type->slug) }}"> {{ $type->name }} </a>
                     </td>
 
