@@ -19,7 +19,7 @@
     @vite(['resources/js/app.js'])
 </head>
 
-<body>
+<body class="z-index">
  <div id="admin">
     @include('partials.admin.sidebar')
 

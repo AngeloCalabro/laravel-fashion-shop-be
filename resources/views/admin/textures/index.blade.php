@@ -59,6 +59,6 @@
 
         </tbody>
     </table>
-    {{-- {{ $textures->links('vendor.pagination.bootstrap-5') }} --}}
+    {{ $textures->links('vendor.pagination.bootstrap-5') }}
     @include('partials.admin.modal-delete')
 @endsection

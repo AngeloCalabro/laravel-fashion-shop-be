@@ -1,6 +1,6 @@
 <nav id="sidebarMenu" class="bg-dark navbar-dark">
         <a href="/" class="nav-link text-white" >
-            <h2 class="p-2"><i class="fa-solid fa-square-rss"></i> Fashion Pisa</h2>
+            <h2 class="p-2"><i class="fa-solid fa-square-rss"></i>MAKE App</h2>
         </a>
         <ul class="nav flex-column">
             <li class="nav-item">
