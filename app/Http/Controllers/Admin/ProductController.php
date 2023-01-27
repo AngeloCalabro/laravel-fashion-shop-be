@@ -57,9 +57,9 @@ class ProductController extends Controller
         $slug = Product::generateSlug($request->name);
         $data['slug'] = $slug;
 
-        if($request->hasFile('images')){
-            $path = Storage::disk('public')->put('images', $request->images);
-            $data['images'] = $path;
+         if($request->hasFile('image')) {
+            $path = Storage::put('images', $request->image);
+            $data['image'] = $path;
         }
 
         $newproduct = Product::create($data);
@@ -69,7 +69,6 @@ class ProductController extends Controller
         if($request->has('colors')){
             $newproduct->colors()->attach($request->colors);
         }
-        
 
         return redirect()->route('admin.products.show', $newproduct->slug);
     }
@@ -114,13 +113,13 @@ class ProductController extends Controller
         $slug = Product::generateSlug($request->name);
         $data['slug'] = $slug;
 
-        if($request->hasFile('images')){
-            if ($product->images) {
-                Storage::delete($product->images);
+        if($request->hasFile('image')){
+            if ($product->image) {
+                Storage::delete($product->image);
             }
 
-            $path = Storage::disk('public')->put('images', $request->images);
-            $data['images'] = $path;
+            $path = Storage::put('images', $request->image);
+            $data['image'] = $path;
         }
 
         $product->update($data);

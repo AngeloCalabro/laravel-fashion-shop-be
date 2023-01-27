@@ -56,7 +56,21 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                    </div>
+
+
+
+                    <div class="mb-3">
+                            <label for="tags" class="form-label">Seleziona tag</label><br>
+                            @foreach ($tags as $tag)
+                                <input type="checkbox" name="tags[]" id="{{$tag->slug}}" value="{{$tag->id}}" {{old('tags', $product->tags) ? (old('tags', $product->tags)->contains($tag->id)) ? 'checked' : '' : ''}}>
+                                <span class="text-capitalize">{{$tag->name}}</span>
+                            @endforeach
+
+                            @error('tags')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                </div>
 
                     <div class="col-6">
 
@@ -74,16 +88,7 @@
                             @enderror
                         </div>
 
-                        <div class="mb-3">
-                            <img id="uploadPreview" width="100" src="https://via.placeholder.com/300x200">
-                            <label for="image" class="form-label">Immagine</label>
-                            <input type="file" name="image" id="image"
-                                class="form-control  @error('image') is-invalid @enderror">
 
-                            @error('image')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
 
                         <div class="mb-3">
                             <label for="type_id" class="form-label">Types</label>
@@ -116,19 +121,6 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="tags" class="form-label">Seleziona tag</label><br>
-                            @foreach ($tags as $tag)
-                                <input type="checkbox" name="tags[]" id="{{$tag->slug}}" value="{{$tag->id}}" {{old('tags', $product->tags) ? (old('tags', $product->tags)->contains($tag->id)) ? 'checked' : '' : ''}}>
-                                <span class="text-capitalize">{{$tag->name}}</span>
-                            @endforeach
-
-                            @error('tags')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                      </div>
-
-
-                      <div class="mb-3">
                         <label for="colors" class="form-label">Seleziona colore</label><br>
                         @foreach ($colors as $color)
                             <input type="checkbox" name="colors[]" id="{{$color->slug}}" value="{{$color->id}}" {{old('colors', $product->colors) ? (old('colors', $product->colors)->contains($color->id)) ? 'checked' : '' : ''}}>
@@ -138,7 +130,19 @@
                         @error('colors')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                  </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <img id="uploadPreview" width="100" src="https://via.placeholder.com/300x200">
+                            <label for="image" class="form-label">Immagine</label>
+                            <input type="file" name="image" id="image"
+                                class="form-control  @error('image') is-invalid @enderror">
+
+                            @error('image')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
 
                     </div>
                 </div>
@@ -150,10 +154,10 @@
 
         </form>
 
-        <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript">
+        {{-- <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript">
         </script>
         <script type="text/javascript">
           bkLib.onDomLoaded(nicEditors.allTextAreas);
-        </script>
+        </script> --}}
 
 @endsection
