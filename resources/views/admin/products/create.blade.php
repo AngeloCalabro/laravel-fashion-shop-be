@@ -42,7 +42,6 @@
                         <select name="price_sign" id="price_sign" class="form-control" required>
                             <option class="text-capitalize" default value="$">$</option>
                             <option class="text-capitalize" value="€">€</option>
-
                         </select>
                     </div>
 
@@ -51,6 +50,19 @@
                         <input type="number" value="0" class="form-control @error('quantity') is-invalid @enderror" id="quantity" name="quantity">
 
                         @error('quantity')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="tags" class="form-label">Seleziona tag</label><br>
+                        @foreach ($tags as $tag)
+                            <input type="checkbox" name="tags[]" value="{{$tag->id}}">
+                            <span class="text-capitalize">{{$tag->name}}</span>
+                        @endforeach
+
+                        @error('tags')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
@@ -73,16 +85,7 @@
                         @enderror
                     </div>
 
-                    <div class="mb-3">
-                        <img id="uploadPreview" width="100" src="https://via.placeholder.com/300x200">
-                        <label for="image" class="form-label">Immagine</label>
-                        <input type="file" name="image" id="image"
-                            class="form-control  @error('image') is-invalid @enderror">
 
-                        @error('image')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
 
                     <div class="mb-3">
                         <label for="type_id" class="form-label">Types</label>
@@ -114,19 +117,7 @@
                         </select>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="tags" class="form-label">Seleziona tag</label><br>
-                        @foreach ($tags as $tag)
-                            <input type="checkbox" name="tags[]" value="{{$tag->id}}">
-                            <span class="text-capitalize">{{$tag->name}}</span>
-                        @endforeach
-
-                        @error('tags')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                      </div>
-
-                      <div class="mb-3">
+                   <div class="mb-3">
                         <label for="colors" class="form-label">Seleziona colore</label><br>
                         @foreach ($colors as $color)
                             <input type="checkbox" name="colors[]" value="{{$color->id}}">
@@ -136,8 +127,17 @@
                         @error('colors')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                      </div>
+                    </div>
 
+                    <div class="mb-3">
+                        <img id="uploadPreview" width="100" src="https://via.placeholder.com/300x200">
+                        <label for="image" class="form-label">Immagine</label>
+                        <input type="file" name="image" id="create_cover_image" class="form-control  @error('image') is-invalid @enderror">
+
+                        @error('image')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
 
                 </div>
             </div>
@@ -148,10 +148,10 @@
             </div>
         </form>
 
-    <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript">
+    {{-- <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript">
         </script>
         <script type="text/javascript">
           bkLib.onDomLoaded(nicEditors.allTextAreas);
-        </script>
+        </script> --}}
 
 @endsection

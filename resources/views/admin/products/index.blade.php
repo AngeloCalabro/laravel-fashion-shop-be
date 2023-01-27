@@ -33,7 +33,7 @@
                     <th scope="row">{{$product->id}}</th>
 
                     <td>
-                        @if ($product->image_link)
+                        @if ($product->image)
                             <img class="image-container" src="{{ asset('storage/' . $product->image) }}" alt="{{$product->name}}">
                         @else
                             <small class="text-secondary">No image</small>
